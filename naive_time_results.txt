@@ -1,0 +1,9 @@
+test_matrices/ch7-9-b5_naive_output.txt 1272.891000 29.405000
+test_matrices/ch7-9-b5_naive_output.txt 1283.189000 29.840000
+test_matrices/nh2010_naive_output.txt 217.694000 5.023000
+test_matrices/nh2010_naive_output.txt 204.259000 6.236000
+test_matrices/Tina_AskCal_naive_output.txt 0.172000 0.003000
+test_matrices/rail516_naive_output.txt 122.195000 2.892000
+test_matrices/lp_pds_10_naive_output.txt 97.958000 2.448000
+test_matrices/ch7-9-b5_naive_output.txt 1253.785000 29.905000
+test_matrices/nh2010_naive_output.txt 241.429000 5.094000

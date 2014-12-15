@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 
 /*
 for each superblock, we will store size of superblock (close to a page), and indices of source/destination that they will hit
@@ -11,6 +13,13 @@ Then, for each superblock, we will have to iterate through the blocks and perfor
 //void sparsity_4x4(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
+		clock_t start;
+        clock_t end;
+        double read_time;
+        double compute_time;
+
+        start = clock();
+
         // READ THE MATRIX 
         FILE *matrix_in;
         matrix_in = fopen(argv[1], "r");
@@ -84,6 +93,11 @@ int main(int argc, char *argv[])
         
         fclose(matrix_in);
 		
+        end = clock();
+
+        /* Get time in milliseconds */
+        read_time = (double)(end - start) / (CLOCKS_PER_SEC / 1000.0);
+
 		// READ THE SOURCE VECTOR
         FILE *src_vec_in;
         src_vec_in = fopen(argv[2], "r");
@@ -127,6 +141,8 @@ int main(int argc, char *argv[])
         }
 
 		// do the multiplication
+		start = clock();
+
 		int r, c, cur_row;
 		r = 0; cur_row = 0;
         for (sblock_i = 0; sblock_i < num_sblocks; sblock_i++)
@@ -205,6 +221,11 @@ int main(int argc, char *argv[])
 			
 		}
 
+		end = clock();
+
+        /* Get time in milliseconds */
+        compute_time = (double)(end - start) / (CLOCKS_PER_SEC / 1000.0);
+
 		// Write the result
 		FILE *result_writer;
         result_writer = fopen(argv[3], "w");
@@ -217,6 +238,14 @@ int main(int argc, char *argv[])
         }
 
         fclose(result_writer); 
+
+        //writes time results
+        FILE *time_writer;
+        time_writer = fopen("naive_time_results.txt", "a");
+
+        fprintf(time_writer, "%s %f %f\n", argv[1], read_time, compute_time);        
+
+        fclose(time_writer);
         
         // free memory?
 }

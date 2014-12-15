@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /*
 for each superblock, we will store size of superblock (close to a page), and indices of source/destination that they will hit
@@ -27,6 +28,13 @@ void smvm_2x2( int bm, const int *b_row_start, const int *b_col_idx, const doubl
 
 int main(int argc, char *argv[])
 {
+        clock_t start;
+        clock_t end;
+        double read_time;
+        double compute_time;
+
+        start = clock();
+
         // READ THE MATRIX 
         FILE *matrix_in;
         matrix_in = fopen(argv[1], "r");
@@ -145,6 +153,11 @@ int main(int argc, char *argv[])
         }
         fclose(matrix_in);
 
+        end = clock();
+
+        /* Get time in milliseconds */
+        read_time = (double)(end - start) / (CLOCKS_PER_SEC / 1000.0);
+
         /*
         READ THE SOURCE VECTOR
         */
@@ -195,6 +208,8 @@ int main(int argc, char *argv[])
         Do the multiplication
         */
         // iterate through the superblocks in outer loop
+
+        start = clock();
         int r, c;
         for (sblock_i = 0; sblock_i < num_sblocks; sblock_i++)
         {
@@ -280,7 +295,12 @@ int main(int argc, char *argv[])
                                         exit(1);
                         }
                 }
-        }        
+        }   
+
+        end = clock();
+
+        /* Get time in milliseconds */
+        compute_time = (double)(end - start) / (CLOCKS_PER_SEC / 1000.0);     
 
         FILE *result_writer;
         result_writer = fopen(argv[3], "w");
@@ -293,5 +313,14 @@ int main(int argc, char *argv[])
         }
 
         fclose(result_writer);
+
+        //writes time results
+        FILE *time_writer;
+        time_writer = fopen("c_time_results.txt", "a");
+
+        fprintf(time_writer, "%s %f %f\n", argv[1], read_time, compute_time);        
+
+        fclose(time_writer);
+
         return 0; 
 }

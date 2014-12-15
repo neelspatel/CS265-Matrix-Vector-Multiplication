@@ -1,0 +1,11 @@
+test_matrices/ch7-9-b5_output.txt 675.035000 20.678000
+test_matrices/nh2010_output.txt 78.389000 1.712000
+test_matrices/nh2010_output.txt 78.268000 1.701000
+test_matrices/nh2010_output.txt 77.878000 1.691000
+test_matrices/nh2010_output.txt 85.302000 1.684000
+test_matrices/nh2010_output.txt 79.036000 1.620000
+test_matrices/nh2010_output.txt 78.156000 1.714000
+test_matrices/ch7-9-b5_output.txt 684.474000 24.635000
+test_matrices/lp_pds_10_output.txt 33.285000 0.594000
+test_matrices/rail516_output.txt 68.984000 2.401000
+test_matrices/Tina_AskCal_output.txt 0.164000 0.003000

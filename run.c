@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
                                         cur_sblock += 19; 
                                         break;
                                 default:
-                                        exit(1);
+                                        exit(2);
                         
                         }                        
                         
@@ -167,21 +167,21 @@ int main(int argc, char *argv[])
         if (src_vec_in == NULL)
         {
                 printf("Could not open src vector file\n");
-                exit(1);
+                exit(3);
         }
         int x_len;
         fscanf(src_vec_in, "%d ", &x_len);
         if (x_len != num_cols)
         {
                 printf("Matrix and vector have incompatible dims\n");
-                exit(1);
+                exit(4);
         }
         int* x = malloc(sizeof(int) * x_len);
 
         if (x == NULL)
         {
                 printf("Could not malloc x\n");
-                exit(1);
+                exit(5);
         }
         int i;
         for(i = 0; i < x_len; i++)
@@ -200,7 +200,7 @@ int main(int argc, char *argv[])
         if (y == NULL)
         {
                 printf("Could not malloc y\n");
-                exit(1);
+                exit(6);
         }
         
 
@@ -292,7 +292,7 @@ int main(int argc, char *argv[])
                                         break;
                                 default:
                                         printf("Unsupported block id %d\n", cur_sblock[0]);
-                                        exit(1);
+                                        exit(7);
                         }
                 }
         }   

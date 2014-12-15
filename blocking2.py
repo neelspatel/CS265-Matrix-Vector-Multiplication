@@ -701,20 +701,18 @@ def naive_blocking(cx, locations, block_row_size, block_col_size, filename):
 #files = ['lp_pds_10']
 #files = [('test_matrices/Tina_AskCal.mtx','test_matrices/Tina_AskCal'),]
 files = [
-	('test_matrices/Tina_AskCal.mtx','test_matrices/Tina_AskCal'),
-	('test_matrices/rail516.mtx','test_matrices/rail516'),
-	('test_matrices/lp_pds_10.mtx','test_matrices/lp_pds_10'),
-	('test_matrices/ch7-9-b5.mtx','test_matrices/ch7-9-b5'),
-#	('test_matrices/IG5-18.mtx','test_matrices/IG5-18'),	
-#	('test_matrices/modified-webbase-1M.mtx','test_matrices/modified-webbase-1M'),
-	('test_matrices/nh2010.mtx','test_matrices/nh2010'),	
-	('test_matrices/TF17.mtx','test_matrices/TF17'),
-	('test_matrices/wy2010.mtx','test_matrices/wy2010'),
-	('test_matrices/shar_te2-b3.mtx', 'test_matrices/shar_te2-b3'),
-	('test_matrices/il2010.mtx', 'test_matrices/il2010'),
-	('test_matrices/mc2depi.mtx', 'test_matrices/mc2depi'),
-	('test_matrices/ut2010.mtx', 'test_matrices/ut2010'),
-	('test_matrices/lp_pds_02.mtx', 'test_matrices/lp_pds_02'),
+#	('test_matrices/Tina_AskCal.mtx','test_matrices/Tina_AskCal'),
+#	('test_matrices/rail516.mtx','test_matrices/rail516'),
+#	('test_matrices/lp_pds_10.mtx','test_matrices/lp_pds_10'),
+#	('test_matrices/ch7-9-b5.mtx','test_matrices/ch7-9-b5'),
+#	('test_matrices/nh2010.mtx','test_matrices/nh2010'),	
+#	('test_matrices/TF17.mtx','test_matrices/TF17'),
+#	('test_matrices/wy2010.mtx','test_matrices/wy2010'),
+#	('test_matrices/shar_te2-b3.mtx', 'test_matrices/shar_te2-b3'),
+#	('test_matrices/il2010.mtx', 'test_matrices/il2010'),
+#	('test_matrices/mc2depi.mtx', 'test_matrices/mc2depi'),
+#	('test_matrices/ut2010.mtx', 'test_matrices/ut2010'),
+#	('test_matrices/lp_pds_02.mtx', 'test_matrices/lp_pds_02'),
 	('test_matrices/roadNet-PA.mtx', 'test_matrices/roadNet-PA'),
 ]
 

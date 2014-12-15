@@ -380,7 +380,7 @@ def run_blocking(cx):
 	#print "Naive ",naive_w,"by",naive_h,"area:", naive_area
 	#print "Compression", float(naive_area)/our_area
 
-	return coord_to_block, cache_block_to_coords, blocks, locations
+	return coord_to_block, cache_block_to_coords, blocked, locations
 
 ################################################################################
 ####### Superblock arrangement component
@@ -713,6 +713,7 @@ files = [
 #	('test_matrices/il2010.mtx', 'test_matrices/il2010'),
 #	('test_matrices/mc2depi.mtx', 'test_matrices/mc2depi'),
 #	('test_matrices/ut2010.mtx', 'test_matrices/ut2010'),
+#	('test_matrices/lp_pds_02.mtx', 'test_matrices/lp_pds_02'),
 ]
 
 for filename, filelabel in files:			
@@ -743,9 +744,42 @@ for filename, filelabel in files:
 	start_time = time.time()
 
 	#creates the blocking
-	coord_to_block, cache_block_to_coords, blocks, locations = run_blocking(cx)
+	coord_to_block, cache_block_to_coords, blocked, locations = run_blocking(cx)
 	
 	finished_blocking = time.time()
+
+	#checks again for blocks that were never blocked	
+	for i,j,v in itertools.izip(cx.row, cx.col, cx.data):		
+		if (i,j) not in blocked:
+			cur_block_list = [1,i,j,v]
+
+			#stores this block by coordinate
+			if (i,j) in coord_to_block:
+				print "Error!!!!!"
+
+			coord_to_block[(i, j)] = cur_block_list
+
+			#calculate cache block 'region' which we're in
+			cache_block_row = i / CACHE_BLOCK_ROWS
+			cache_block_col = j / CACHE_BLOCK_COLS
+
+			if (cache_block_row, cache_block_col) not in cache_block_to_coords:
+				cache_block_to_coords[(cache_block_row, cache_block_col)] = [0, 0, []]
+			
+			#updates the size within this cache block
+			cache_block_to_coords[(cache_block_row, cache_block_col)][0] += BLOCK_ID_TO_SIZE[1]
+
+			#updates the count of blocks within this cache block
+			cache_block_to_coords[(cache_block_row, cache_block_col)][1] += 1
+
+			#appends the current (row, col) to the list of coordinates
+			cache_block_to_coords[(cache_block_row, cache_block_col)][2].append((i, j))
+
+			#increment our total area by this amount
+			#our_area += (cur_row_end - cur_row_start + 1) * (cur_col_end - cur_col_start + 1)		
+
+			#mark this current block as blocked
+			mark_as_blocked(blocked, i, i, j, j)	
 
 	#arranges blocks into superblocks
 	superblocks = []
@@ -783,12 +817,13 @@ for filename, filelabel in files:
 
 	finished_naive_blocking = time.time()
 
+	print nonzero_count, "vs", len(cx.row)
+
 	#writes results to file
 	outfile = open('time_results.txt', 'a')
 	outfile.write('%s %f %f %f %f %d %d %d %d\n' % (filelabel, finished_blocking - start_time, finished_superblocking - finished_blocking, finished_writing_expected_output - finished_superblocking, finished_naive_blocking - finished_writing_expected_output, num_naive_blocks, num_our_blocks, num_naive_blocks*16, area_our_blocks))
 	outfile.close()
-
-	print nonzero_count, "vs", len(cx.row)
+	
 
 	#prints command to screen
 	#print "./run", filelabel+'_output.txt', filelabel+'_vector.txt', filelabel+'_calculated_result.txt'

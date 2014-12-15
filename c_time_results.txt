@@ -9,3 +9,6 @@ test_matrices/ch7-9-b5_output.txt 684.474000 24.635000
 test_matrices/lp_pds_10_output.txt 33.285000 0.594000
 test_matrices/rail516_output.txt 68.984000 2.401000
 test_matrices/Tina_AskCal_output.txt 0.164000 0.003000
+test_matrices/rail516_output.txt 69.520000 2.240000
+test_matrices/Tina_AskCal_output.txt 0.177000 0.002000
+test_matrices/ch7-9-b5_output.txt 666.703000 20.689000

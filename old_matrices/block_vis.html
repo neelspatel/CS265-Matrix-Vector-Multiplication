@@ -1,0 +1,80 @@
+<html>
+<head>
+	
+
+	<link href="css/bootstrap.css" rel="stylesheet" />	
+	<script src="js/jquery.js"></script>	
+
+	<script>	
+		function color(){
+			var lines = $("#matrix").html().split("\n");
+			var elements = [];
+			for(var i=0,len=lines.length;i<len;i++){
+				elements.push(lines[i].split("\t"))
+			}
+		}
+	</script>
+</head>
+<body>	
+
+	<div class='container bodyContainer'>		
+		<div class="row">
+			<div class="col-sm-6">
+				<textarea rows="4" cols="50" id="matrix">				
+				</textarea>
+			</div>
+			<div class="col-sm-6">
+				<textarea rows="4" cols="50" id="blocks">				
+				</textarea>
+			</div>
+		</div>
+		<table class="table">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>		
+	</div>
+</body>
+</html>

@@ -145,6 +145,7 @@ int main(int argc, char *argv[])
                                         cur_sblock += 19; 
                                         break;
                                 default:
+                                        printf("Error, encountered block %d \n", cur_sblock[0])
                                         exit(2);
                         
                         }                        

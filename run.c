@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         matrix_in = fopen(argv[1], "r");
         if (matrix_in == NULL)
         {
-                printf("Could not open matrix file");
+                printf("Could not open matrix file\n");
                 exit(1);
         }
         int num_rows, num_cols; 
@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
         src_vec_in = fopen(argv[2], "r");
         if (src_vec_in == NULL)
         {
-                printf("Could not open src vector file");
+                printf("Could not open src vector file\n");
                 exit(1);
         }
         int x_len;
@@ -180,7 +180,7 @@ int main(int argc, char *argv[])
 
         if (x == NULL)
         {
-                printf("Could not malloc x");
+                printf("Could not malloc x\n");
                 exit(1);
         }
         int i;
@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
 
         if (y == NULL)
         {
-                printf("Could not malloc y");
+                printf("Could not malloc y\n");
                 exit(1);
         }
         
@@ -291,7 +291,7 @@ int main(int argc, char *argv[])
                                         cur_sblock += 19;
                                         break;
                                 default:
-                                        printf("Unsupported block id %d", cur_sblock[0]);
+                                        printf("Unsupported block id %d\n", cur_sblock[0]);
                                         exit(1);
                         }
                 }

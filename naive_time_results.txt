@@ -1,0 +1,13 @@
+test_matrices/Tina_AskCal_naive_output.txt 0.044000 0.002000
+test_matrices/rail516_naive_output.txt 123.841000 2.818000
+test_matrices/lp_pds_10_naive_output.txt 96.961000 2.588000
+test_matrices/ch7-9-b5_naive_output.txt 1403.114000 35.116000
+test_matrices/nh2010_naive_output.txt 220.368000 5.105000
+test_matrices/TF17_naive_output.txt 405.917000 12.078000
+test_matrices/wy2010_naive_output.txt 429.895000 9.180000
+test_matrices/shar_te2-b3_naive_output.txt 565.864000 16.966000
+test_matrices/il2010_naive_output.txt 2523.986000 74.152000
+test_matrices/mc2depi_naive_output.txt 812.460000 15.597000
+test_matrices/ut2010_naive_output.txt 558.983000 15.074000
+test_matrices/lp_pds_02_naive_output.txt 19.650000 0.614000
+test_matrices/roadNet-PA_naive_output.txt 2504.725000 77.741000

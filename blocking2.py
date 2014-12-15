@@ -819,8 +819,6 @@ for filename, filelabel in files:
 
 	finished_naive_blocking = time.time()
 
-	print nonzero_count, "vs", len(cx.row)
-
 	#writes results to file
 	outfile = open('time_results.txt', 'a')
 	outfile.write('%s %f %f %f %f %d %d %d %d\n' % (filelabel, finished_blocking - start_time, finished_superblocking - finished_blocking, finished_writing_expected_output - finished_superblocking, finished_naive_blocking - finished_writing_expected_output, num_naive_blocks, num_our_blocks, num_naive_blocks*16, area_our_blocks))

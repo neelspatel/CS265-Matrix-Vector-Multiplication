@@ -11,3 +11,27 @@ test_matrices/mc2depi_output.txt 486.027000 14.962000
 test_matrices/ut2010_output.txt 204.477000 5.290000
 test_matrices/lp_pds_02_output.txt 6.091000 0.145000
 test_matrices/roadNet-PA_output.txt 928.640000 31.615000
+test_matrices/ch7-9-b5_output.txt 704.116000 20.669000
+
+#now doing cache block experiments
+500_block_test_matrices/rail516_output.txt 70.441000 2.220000
+500_block_test_matrices/shar_te2-b3_output.txt 245.283000 7.034000
+500_block_test_matrices/lp_pds_02_output.txt 4.636000 0.090000
+2000_block_test_matrices/rail516_output.txt 75.164000 2.251000
+2000_block_test_matrices/shar_te2-b3_output.txt 257.185000 6.654000
+2000_block_test_matrices/lp_pds_02_output.txt 5.032000 0.098000
+2000_block_test_matrices/rail516_output.txt 75.488000 2.273000
+2000_block_test_matrices/shar_te2-b3_output.txt 246.674000 6.608000
+2000_block_test_matrices/lp_pds_02_output.txt 5.852000 0.100000
+2000_block_test_matrices/rail516_output.txt 70.276000 2.275000
+2000_block_test_matrices/shar_te2-b3_output.txt 249.284000 6.613000
+2000_block_test_matrices/lp_pds_02_output.txt 4.945000 0.097000
+2000_block_test_matrices/rail516_output.txt 70.217000 2.266000
+2000_block_test_matrices/shar_te2-b3_output.txt 240.932000 8.797000
+2000_block_test_matrices/lp_pds_02_output.txt 6.779000 0.136000
+test_matrices/rail516_output.txt 75.862000 2.762000
+test_matrices/shar_te2-b3_output.txt 247.383000 8.737000
+test_matrices/lp_pds_02_output.txt 5.118000 0.096000
+200_block_test_matrices/rail516_output.txt 69.010000 2.266000
+200_block_test_matrices/shar_te2-b3_output.txt 235.379000 6.725000
+200_block_test_matrices/lp_pds_02_output.txt 5.132000 0.104000

@@ -11,3 +11,14 @@ test_matrices/mc2depi_naive_output.txt 812.460000 15.597000
 test_matrices/ut2010_naive_output.txt 558.983000 15.074000
 test_matrices/lp_pds_02_naive_output.txt 19.650000 0.614000
 test_matrices/roadNet-PA_naive_output.txt 2504.725000 77.741000
+
+#now doing cache block experiments
+500_block_test_matrices/rail516_naive_output.txt 127.211000 2.902000
+500_block_test_matrices/shar_te2-b3_naive_output.txt 548.833000 14.958000
+500_block_test_matrices/lp_pds_02_naive_output.txt 14.641000 0.389000
+test_matrices/rail516_naive_output.txt 134.460000 3.022000
+test_matrices/shar_te2-b3_naive_output.txt 595.049000 12.885000
+test_matrices/lp_pds_02_naive_output.txt 18.712000 0.608000
+200_block_test_matrices/rail516_naive_output.txt 125.003000 2.873000
+200_block_test_matrices/shar_te2-b3_naive_output.txt 546.489000 14.241000
+200_block_test_matrices/lp_pds_02_naive_output.txt 14.634000 0.380000

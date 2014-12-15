@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:06 2014
+
+
+ Performance counter stats for './run test_matrices/mc2depi_output.txt test_matrices/mc2depi_vector.txt test_matrices/mc2depi_calculated.txt':
+
+                 0 dTLB-load-misses                                             [66.94%]
+            18,381 dTLB-store-misses                                            [66.99%]
+             1,339 iTLB-load-misses                                             [66.99%]
+        485.364575 cpu-clock (msec)                                            
+           706,949 cache-misses                                                 [66.99%]
+         2,091,433 L1-dcache-load-misses                                        [66.17%]
+           702,490 L1-dcache-store-misses                                       [66.11%]
+
+       0.484997673 seconds time elapsed
+

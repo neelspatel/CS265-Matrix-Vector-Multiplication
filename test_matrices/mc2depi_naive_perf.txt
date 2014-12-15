@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:06 2014
+
+
+ Performance counter stats for './naive test_matrices/mc2depi_naive_output.txt test_matrices/mc2depi_vector.txt test_matrices/mc2depi_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [66.61%]
+            28,710 dTLB-store-misses                                            [66.61%]
+             3,159 iTLB-load-misses                                             [66.61%]
+        719.689443 cpu-clock (msec)                                            
+         1,039,073 cache-misses                                                 [66.96%]
+         2,680,159 L1-dcache-load-misses                                        [67.04%]
+         1,284,663 L1-dcache-store-misses                                       [66.61%]
+
+       0.718980352 seconds time elapsed
+

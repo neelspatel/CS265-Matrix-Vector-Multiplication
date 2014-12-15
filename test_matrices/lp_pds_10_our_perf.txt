@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:15:59 2014
+
+
+ Performance counter stats for './run test_matrices/lp_pds_10_output.txt test_matrices/lp_pds_10_vector.txt test_matrices/lp_pds_10_calculated.txt':
+
+                 0 dTLB-load-misses                                             [60.11%]
+             1,357 dTLB-store-misses                                            [75.01%]
+             1,615 iTLB-load-misses                                             [76.85%]
+         34.547635 cpu-clock (msec)                                            
+            45,119 cache-misses                                                 [76.84%]
+           209,951 L1-dcache-load-misses                                        [65.25%]
+            61,371 L1-dcache-store-misses                                       [53.68%]
+
+       0.034757170 seconds time elapsed
+

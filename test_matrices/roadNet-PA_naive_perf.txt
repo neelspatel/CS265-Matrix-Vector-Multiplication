@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:08 2014
+
+
+ Performance counter stats for './naive test_matrices/roadNet-PA_naive_output.txt test_matrices/roadNet-PA_vector.txt test_matrices/roadNet-PA_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [66.58%]
+            67,433 dTLB-store-misses                                            [66.75%]
+             2,363 iTLB-load-misses                                             [66.78%]
+       3159.518662 cpu-clock (msec)                                            
+         2,744,617 cache-misses                                                 [66.78%]
+         7,513,978 L1-dcache-load-misses                                        [66.66%]
+         3,404,924 L1-dcache-store-misses                                       [66.53%]
+
+       3.155268671 seconds time elapsed
+

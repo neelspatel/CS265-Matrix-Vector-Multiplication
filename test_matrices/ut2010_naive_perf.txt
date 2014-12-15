@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:07 2014
+
+
+ Performance counter stats for './naive test_matrices/ut2010_naive_output.txt test_matrices/ut2010_vector.txt test_matrices/ut2010_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [66.81%]
+            21,050 dTLB-store-misses                                            [66.81%]
+             1,612 iTLB-load-misses                                             [66.82%]
+        506.873135 cpu-clock (msec)                                            
+           789,665 cache-misses                                                 [66.81%]
+         2,450,938 L1-dcache-load-misses                                        [66.58%]
+           884,711 L1-dcache-store-misses                                       [66.66%]
+
+       0.506419767 seconds time elapsed
+

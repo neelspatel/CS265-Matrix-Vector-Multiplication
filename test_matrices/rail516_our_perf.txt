@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:15:59 2014
+
+
+ Performance counter stats for './run test_matrices/rail516_output.txt test_matrices/rail516_vector.txt test_matrices/rail516_calculated.txt':
+
+                 0 dTLB-load-misses                                             [66.40%]
+             2,904 dTLB-store-misses                                            [66.40%]
+             1,361 iTLB-load-misses                                             [66.41%]
+         71.489230 cpu-clock (msec)                                            
+            98,877 cache-misses                                                 [67.42%]
+           174,790 L1-dcache-load-misses                                        [70.59%]
+           104,634 L1-dcache-store-misses                                       [66.40%]
+
+       0.071664673 seconds time elapsed
+

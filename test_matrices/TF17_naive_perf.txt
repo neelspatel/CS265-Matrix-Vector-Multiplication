@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:01 2014
+
+
+ Performance counter stats for './naive test_matrices/TF17_naive_output.txt test_matrices/TF17_vector.txt test_matrices/TF17_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [67.01%]
+            16,239 dTLB-store-misses                                            [67.31%]
+             1,270 iTLB-load-misses                                             [67.31%]
+        392.091231 cpu-clock (msec)                                            
+           607,635 cache-misses                                                 [67.31%]
+         1,350,540 L1-dcache-load-misses                                        [66.29%]
+           667,266 L1-dcache-store-misses                                       [65.59%]
+
+       0.391755196 seconds time elapsed
+

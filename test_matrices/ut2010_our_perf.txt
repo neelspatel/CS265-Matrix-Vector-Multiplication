@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:07 2014
+
+
+ Performance counter stats for './run test_matrices/ut2010_output.txt test_matrices/ut2010_vector.txt test_matrices/ut2010_calculated.txt':
+
+                 0 dTLB-load-misses                                             [65.70%]
+             6,902 dTLB-store-misses                                            [65.70%]
+             1,223 iTLB-load-misses                                             [66.46%]
+        186.775155 cpu-clock (msec)                                            
+           256,666 cache-misses                                                 [69.56%]
+           892,804 L1-dcache-load-misses                                        [67.84%]
+           293,861 L1-dcache-store-misses                                       [65.70%]
+
+       0.186774271 seconds time elapsed
+

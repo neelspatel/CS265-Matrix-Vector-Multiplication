@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:15:59 2014
+
+
+ Performance counter stats for './naive test_matrices/rail516_naive_output.txt test_matrices/rail516_vector.txt test_matrices/rail516_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [65.25%]
+             5,091 dTLB-store-misses                                            [65.25%]
+             1,047 iTLB-load-misses                                             [66.29%]
+        115.220571 cpu-clock (msec)                                            
+           155,947 cache-misses                                                 [71.43%]
+           519,204 L1-dcache-load-misses                                        [68.72%]
+           188,432 L1-dcache-store-misses                                       [65.25%]
+
+       0.115358068 seconds time elapsed
+

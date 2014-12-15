@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:03 2014
+
+
+ Performance counter stats for './run test_matrices/il2010_output.txt test_matrices/il2010_vector.txt test_matrices/il2010_calculated.txt':
+
+                 0 dTLB-load-misses                                             [66.31%]
+            20,294 dTLB-store-misses                                            [67.09%]
+             1,778 iTLB-load-misses                                             [67.26%]
+        709.538988 cpu-clock (msec)                                            
+           976,785 cache-misses                                                 [67.26%]
+         3,261,577 L1-dcache-load-misses                                        [66.57%]
+         1,142,699 L1-dcache-store-misses                                       [66.00%]
+
+       0.709023127 seconds time elapsed
+

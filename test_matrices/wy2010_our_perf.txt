@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:02 2014
+
+
+ Performance counter stats for './run test_matrices/wy2010_output.txt test_matrices/wy2010_vector.txt test_matrices/wy2010_calculated.txt':
+
+                 0 dTLB-load-misses                                             [65.27%]
+             4,651 dTLB-store-misses                                            [65.28%]
+             1,227 iTLB-load-misses                                             [66.76%]
+        138.340985 cpu-clock (msec)                                            
+           186,078 cache-misses                                                 [70.58%]
+           634,440 L1-dcache-load-misses                                        [68.16%]
+           228,095 L1-dcache-store-misses                                       [65.27%]
+
+       0.138419792 seconds time elapsed
+

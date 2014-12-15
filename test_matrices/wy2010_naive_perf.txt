@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:02 2014
+
+
+ Performance counter stats for './naive test_matrices/wy2010_naive_output.txt test_matrices/wy2010_vector.txt test_matrices/wy2010_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [67.03%]
+            14,825 dTLB-store-misses                                            [67.16%]
+             1,301 iTLB-load-misses                                             [67.16%]
+        365.874986 cpu-clock (msec)                                            
+           575,416 cache-misses                                                 [67.16%]
+         1,694,630 L1-dcache-load-misses                                        [66.07%]
+           630,222 L1-dcache-store-misses                                       [65.89%]
+
+       0.365642257 seconds time elapsed
+

@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:02 2014
+
+
+ Performance counter stats for './naive test_matrices/shar_te2-b3_naive_output.txt test_matrices/shar_te2-b3_vector.txt test_matrices/shar_te2-b3_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [66.57%]
+            21,656 dTLB-store-misses                                            [66.57%]
+             1,684 iTLB-load-misses                                             [66.57%]
+        527.200514 cpu-clock (msec)                                            
+           791,398 cache-misses                                                 [66.99%]
+         2,004,413 L1-dcache-load-misses                                        [67.17%]
+           979,473 L1-dcache-store-misses                                       [66.57%]
+
+       0.526787475 seconds time elapsed
+

@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:01 2014
+
+
+ Performance counter stats for './naive test_matrices/nh2010_naive_output.txt test_matrices/nh2010_vector.txt test_matrices/nh2010_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [67.34%]
+             8,597 dTLB-store-misses                                            [67.74%]
+             1,181 iTLB-load-misses                                             [67.75%]
+        198.635877 cpu-clock (msec)                                            
+           321,219 cache-misses                                                 [67.74%]
+           634,793 L1-dcache-load-misses                                        [65.73%]
+           348,783 L1-dcache-store-misses                                       [64.75%]
+
+       0.198647471 seconds time elapsed
+

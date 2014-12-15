@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:07 2014
+
+
+ Performance counter stats for './naive test_matrices/lp_pds_02_naive_output.txt test_matrices/lp_pds_02_vector.txt test_matrices/lp_pds_02_naive_calculated.txt':
+
+                 0 dTLB-load-misses                                             [47.34%]
+               845 dTLB-store-misses                                            [58.26%]
+               618 iTLB-load-misses                                            
+         15.187201 cpu-clock (msec)                                            
+            17,754 cache-misses                                                
+            79,087 L1-dcache-load-misses                                        [73.65%]
+            31,452 L1-dcache-store-misses                                       [47.33%]
+
+       0.015377602 seconds time elapsed
+

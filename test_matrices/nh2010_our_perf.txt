@@ -1,0 +1,15 @@
+# started on Mon Dec 15 08:16:01 2014
+
+
+ Performance counter stats for './run test_matrices/nh2010_output.txt test_matrices/nh2010_vector.txt test_matrices/nh2010_calculated.txt':
+
+                 0 dTLB-load-misses                                             [66.73%]
+             2,996 dTLB-store-misses                                            [68.33%]
+             2,194 iTLB-load-misses                                             [68.33%]
+         75.852009 cpu-clock (msec)                                            
+           105,769 cache-misses                                                 [68.34%]
+           249,536 L1-dcache-load-misses                                        [68.16%]
+           113,345 L1-dcache-store-misses                                       [63.50%]
+
+       0.076021983 seconds time elapsed
+

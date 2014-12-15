@@ -7,6 +7,8 @@ from collections import Counter
 from scipy.spatial import cKDTree as KDTree
 import numpy as np
 
+from twilio.rest import TwilioRestClient
+
 # num bytes in cache line
 CACHE_LINE = 64
 # num bytes in entry of A,x,y (int = 4 bytes)
@@ -32,8 +34,6 @@ quadrant_sampling_rate = 0.2
 height = 7
 width = 7
 quadrant_threshold = 0.5
-
-PREFIX = "1_by_4_"
 
 ################################################################################
 ####### Blocking component
@@ -172,8 +172,8 @@ def create_block(i,j, locations, blocked, sampling_rate):
 				#returns these bounds
 				return cur_row_start, cur_row_end, cur_col_start, cur_col_end
 
-	#otherwise, return this singleton
-	return i,i,j,j
+	#otherwise, since no quadrants were dense enough, return this singleton
+	return i, i, j, j
 
 #given a block, checks if it is within the bounds of the matrix
 #if not, clips it to a new square block that does fit
@@ -319,7 +319,7 @@ def run_blocking(cx):
 	#print "Naive ",naive_w,"by",naive_h,"area:", naive_area
 	#print "Compression", float(naive_area)/our_area
 
-	return coord_to_block, cache_block_to_coords, blocks, locations
+	return coord_to_block, cache_block_to_coords, blocked, locations
 
 ################################################################################
 ####### Superblock arrangement component
@@ -459,6 +459,7 @@ def write_superblocks(superblocks, coord_to_block, fname, cx):
 	"""
 	total_num_blocks = 0
 	total_area_blocks = 0
+	total_nonzero_el = 0
 
 	outfile = open(fname, 'w')
 	num_sblocks = len(superblocks)
@@ -476,10 +477,13 @@ def write_superblocks(superblocks, coord_to_block, fname, cx):
 			for val in vals:
 				total_area_blocks += 1
 				outfile.write("%d " % val)
+				if val != 0:
+					total_nonzero_el += 1
+
 		outfile.write("\n")
 	outfile.close()
 
-	return total_num_blocks, total_area_blocks
+	return total_num_blocks, total_area_blocks, total_nonzero_el
 
 def naive_blocking(cx, locations, block_row_size, block_col_size, filename):
 	#row, col, list of vals
@@ -568,7 +572,7 @@ def naive_blocking(cx, locations, block_row_size, block_col_size, filename):
 					
 					#if this is a nonzero element as well
 					if (cur_block_row, cur_block_col) in locations:
-						cur_vals[2+r1*4+c1] = locations[(cur_block_row, cur_block_col)]
+						cur_vals[2+r1*block_col_size+c1] = locations[(cur_block_row, cur_block_col)]
 						have_nonzero = True
 
 			if have_nonzero:
@@ -633,21 +637,23 @@ def naive_blocking(cx, locations, block_row_size, block_col_size, filename):
 #files =["me2010.mtx"]
 
 #files = ['lp_pds_10']
-#files = [('test_matrices/Tina_AskCal.mtx','test_matrices/Tina_AskCal'),]
+#files = [('1_4test_matrices/Tina_AskCal.mtx','1_4test_matrices/Tina_AskCal'),]
 files = [
-	('test_matrices/Tina_AskCal.mtx','test_matrices/Tina_AskCal'),
-	('test_matrices/ch7-9-b5.mtx','test_matrices/ch7-9-b5'),
-	('test_matrices/IG5-18.mtx','test_matrices/IG5-18'),
-	('test_matrices/lp_pds_10.mtx','test_matrices/lp_pds_10'),
-	('test_matrices/modified-webbase-1M.mtx','test_matrices/modified-webbase-1M'),
-	('test_matrices/nh2010.mtx','test_matrices/nh2010'),
-	('test_matrices/rail516.mtx','test_matrices/rail516'),
-	('test_matrices/TF17.mtx','test_matrices/TF17'),
-	('test_matrices/wy2010.mtx','test_matrices/wy2010'),
-	('test_matrices/shar_te2-b3.mtx', 'test_matrices/shar_te2-b3'),
-	('test_matrices/il2010.mtx', 'test_matrices/il2010'),
-	('test_matrices/mc2depi.mtx', 'test_matrices/mc2depi'),
-	('test_matrices/ut2010.mtx', 'test_matrices/ut2010'),
+	('1_4test_matrices/Tina_AskCal.mtx','1_4test_matrices/Tina_AskCal'),
+	('1_4test_matrices/rail516.mtx','1_4test_matrices/rail516'),
+	('1_4test_matrices/lp_pds_10.mtx','1_4test_matrices/lp_pds_10'),
+	('1_4test_matrices/ch7-9-b5.mtx','1_4test_matrices/ch7-9-b5'),
+#	('1_4test_matrices/IG5-18.mtx','1_4test_matrices/IG5-18'),	
+#	('1_4test_matrices/modified-webbase-1M.mtx','1_4test_matrices/modified-webbase-1M'),
+	('1_4test_matrices/nh2010.mtx','1_4test_matrices/nh2010'),	
+	('1_4test_matrices/TF17.mtx','1_4test_matrices/TF17'),
+	('1_4test_matrices/wy2010.mtx','1_4test_matrices/wy2010'),
+	('1_4test_matrices/shar_te2-b3.mtx', '1_4test_matrices/shar_te2-b3'),
+	('1_4test_matrices/il2010.mtx', '1_4test_matrices/il2010'),
+	('1_4test_matrices/mc2depi.mtx', '1_4test_matrices/mc2depi'),
+	('1_4test_matrices/ut2010.mtx', '1_4test_matrices/ut2010'),
+	('1_4test_matrices/lp_pds_02.mtx', '1_4test_matrices/lp_pds_02'),
+	('1_4test_matrices/roadNet-PA.mtx', '1_4test_matrices/roadNet-PA'),
 ]
 
 for filename, filelabel in files:			
@@ -678,9 +684,46 @@ for filename, filelabel in files:
 	start_time = time.time()
 
 	#creates the blocking
-	coord_to_block, cache_block_to_coords, blocks, locations = run_blocking(cx)
+	coord_to_block, cache_block_to_coords, blocked, locations = run_blocking(cx)
 	
 	finished_blocking = time.time()
+
+	print "Finished blocking"
+
+	#checks again for blocks that were never blocked	
+	for i,j,v in itertools.izip(cx.row, cx.col, cx.data):		
+		if (i,j) not in blocked:
+			cur_block_list = [1,i,j,v]
+
+			#stores this block by coordinate
+			if (i,j) in coord_to_block:
+				print "Error!!!!!"
+
+			coord_to_block[(i, j)] = cur_block_list
+
+			#calculate cache block 'region' which we're in
+			cache_block_row = i / CACHE_BLOCK_ROWS
+			cache_block_col = j / CACHE_BLOCK_COLS
+
+			if (cache_block_row, cache_block_col) not in cache_block_to_coords:
+				cache_block_to_coords[(cache_block_row, cache_block_col)] = [0, 0, []]
+			
+			#updates the size within this cache block
+			cache_block_to_coords[(cache_block_row, cache_block_col)][0] += BLOCK_ID_TO_SIZE[1]
+
+			#updates the count of blocks within this cache block
+			cache_block_to_coords[(cache_block_row, cache_block_col)][1] += 1
+
+			#appends the current (row, col) to the list of coordinates
+			cache_block_to_coords[(cache_block_row, cache_block_col)][2].append((i, j))
+
+			#increment our total area by this amount
+			#our_area += (cur_row_end - cur_row_start + 1) * (cur_col_end - cur_col_start + 1)		
+
+			#mark this current block as blocked
+			mark_as_blocked(blocked, i, i, j, j)	
+
+	print "Finished reblocking"
 
 	#arranges blocks into superblocks
 	superblocks = []
@@ -693,10 +736,12 @@ for filename, filelabel in files:
 				# reorder the superblock
 				superblocks.append((size, num_blocks, ordered_sblock))
 	
-	num_our_blocks, area_our_blocks = write_superblocks(superblocks, coord_to_block, filelabel+"_output.txt", cx)
+	num_our_blocks, area_our_blocks, nonzero_count = write_superblocks(superblocks, coord_to_block, filelabel+"_output.txt", cx)
 	end_time = time.time()
 
 	finished_superblocking = time.time()
+
+	print "Finished superblocking"
 
 	#print len(coord_to_block.keys()), "blocks"	
 	#print len(cache_block_to_coords.keys()), "cache blocks"
@@ -719,13 +764,21 @@ for filename, filelabel in files:
 	finished_naive_blocking = time.time()
 
 	#writes results to file
-	outfile = open('1_4_time_results.txt', 'a')
+	outfile = open('1_4time_results.txt', 'a')
 	outfile.write('%s %f %f %f %f %d %d %d %d\n' % (filelabel, finished_blocking - start_time, finished_superblocking - finished_blocking, finished_writing_expected_output - finished_superblocking, finished_naive_blocking - finished_writing_expected_output, num_naive_blocks, num_our_blocks, num_naive_blocks*16, area_our_blocks))
 	outfile.close()
+	
 
 	#prints command to screen
 	#print "./run", filelabel+'_output.txt', filelabel+'_vector.txt', filelabel+'_calculated_result.txt'
 	#print "diff", filelabel+'_calculated_result.txt', filelabel+'_expected_result.txt'
 	#print "./naive", filelabel+'_naive_output.txt', filelabel+'_vector.txt', filelabel+'_naive_result.txt'
 	#print "diff", filelabel+'_naive_result.txt', filelabel+'_expected_result.txt'
+
+	#texts to alert
+	account_sid = "ACa0741808987f84fd6e5f6c8564dbbff5"
+	auth_token  = "432c3adfab7c910e9519bf07e7976b9a"
+	client = TwilioRestClient(account_sid, auth_token)
+
+	client.messages.create(to="+14074324062", from_="+18102923084", body=filelabel+": "+str(nonzero_count)+" vs "+str(len(cx.row)))
 

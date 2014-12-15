@@ -706,8 +706,8 @@ files = [
 	('test_matrices/rail516.mtx','test_matrices/rail516'),
 	('test_matrices/lp_pds_10.mtx','test_matrices/lp_pds_10'),
 	('test_matrices/ch7-9-b5.mtx','test_matrices/ch7-9-b5'),
-	('test_matrices/IG5-18.mtx','test_matrices/IG5-18'),	
-	('test_matrices/modified-webbase-1M.mtx','test_matrices/modified-webbase-1M'),
+#	('test_matrices/IG5-18.mtx','test_matrices/IG5-18'),	
+#	('test_matrices/modified-webbase-1M.mtx','test_matrices/modified-webbase-1M'),
 	('test_matrices/nh2010.mtx','test_matrices/nh2010'),	
 	('test_matrices/TF17.mtx','test_matrices/TF17'),
 	('test_matrices/wy2010.mtx','test_matrices/wy2010'),
@@ -716,6 +716,7 @@ files = [
 	('test_matrices/mc2depi.mtx', 'test_matrices/mc2depi'),
 	('test_matrices/ut2010.mtx', 'test_matrices/ut2010'),
 	('test_matrices/lp_pds_02.mtx', 'test_matrices/lp_pds_02'),
+	('test_matrices/roadNet-PA.mtx', 'test_matrices/roadNet-PA'),
 ]
 
 for filename, filelabel in files:			
@@ -750,6 +751,8 @@ for filename, filelabel in files:
 	
 	finished_blocking = time.time()
 
+	print "Finished blocking"
+
 	#checks again for blocks that were never blocked	
 	for i,j,v in itertools.izip(cx.row, cx.col, cx.data):		
 		if (i,j) not in blocked:
@@ -783,6 +786,8 @@ for filename, filelabel in files:
 			#mark this current block as blocked
 			mark_as_blocked(blocked, i, i, j, j)	
 
+	print "Finished reblocking"
+
 	#arranges blocks into superblocks
 	superblocks = []
 	for i in range(matrix_rows/CACHE_BLOCK_ROWS + 1): 
@@ -798,6 +803,8 @@ for filename, filelabel in files:
 	end_time = time.time()
 
 	finished_superblocking = time.time()
+
+	print "Finished superblocking"
 
 	#print len(coord_to_block.keys()), "blocks"	
 	#print len(cache_block_to_coords.keys()), "cache blocks"

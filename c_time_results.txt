@@ -12,3 +12,7 @@ test_matrices/Tina_AskCal_output.txt 0.164000 0.003000
 test_matrices/rail516_output.txt 69.520000 2.240000
 test_matrices/Tina_AskCal_output.txt 0.177000 0.002000
 test_matrices/ch7-9-b5_output.txt 666.703000 20.689000
+test_matrices/roadNet-PA_output.txt 977.322000 27.222000
+test_matrices/roadNet-PA_output.txt 1116.429000 34.006000
+test_matrices/roadNet-PA_output.txt 1082.191000 33.232000
+test_matrices/roadNet-PA_output.txt 1068.038000 35.413000

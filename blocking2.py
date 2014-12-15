@@ -6,7 +6,6 @@ import time
 from collections import Counter
 from scipy.spatial import cKDTree as KDTree
 import numpy as np
-
 from twilio.rest import TwilioRestClient
 
 # num bytes in cache line

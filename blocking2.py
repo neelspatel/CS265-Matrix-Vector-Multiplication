@@ -635,7 +635,7 @@ def naive_blocking(cx, locations, block_row_size, block_col_size, filename):
 					
 					#if this is a nonzero element as well
 					if (cur_block_row, cur_block_col) in locations:
-						cur_vals[2+r1*4+c1] = locations[(cur_block_row, cur_block_col)]
+						cur_vals[2+r1*block_col_size+c1] = locations[(cur_block_row, cur_block_col)]
 						have_nonzero = True
 
 			if have_nonzero:
